@@ -1,239 +1,165 @@
 ---
-title: API Reference
+title: Delos
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='mailto:tech@layertech.io?Subject=API%20Access'>Request API Key</a>
+  - <a href='https://layertech.io/'>By Layer Tech</a>
 
-includes:
-  - errors
 
 search: true
 ---
 
-# Introduction
+# Welcome to Delos
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Welcome to the Delos API. Delos API provides an easy and fast way to interact with the Factom blockchain. 
 
 # Authentication
 
-> To authorize, use this code:
+Contact Layer Tech to obtain an API key to use Delos.
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```bash
+curl -u YOUR_API_KEY: api.delos.layertech.io/v1/endpoints
 ```
 
-```python
-import kittn
+> Make sure to replace `YOUR_API_KEY` with your API key. Leave colon in place.
 
-api = kittn.authorize('meowmeowmeow')
-```
+Delos uses API keys to allow access to the API. You can request an API key by contacting tech [AT] layertech.io.
+
+<aside class="notice">When not using <code>-u</code> flag, use <code>curl -H "Authorization: bearer YOUR_API_KEY"</code> to set the authorization header.</aside>
+
+# Endpoints
+
+
+## Create a Chain
+
+Creates a chain with supplied entry.
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl -X POST -H "Content-Type: application/json" \ 
+  -d '{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'
+  "https://api.layertech.io/api/chains" \
+  -u YOUR_API_KEY
 ```
 
-```javascript
-const kittn = require('kittn');
+> The above command returns JSON structured like this:
 
-let api = kittn.authorize('meowmeowmeow');
+```json
+{
+  "chain_id": "99268f3ad86eca2411115569e0c9e08f7cf7c642446553e0593cecd351c27bd"
+}
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+### HTTP Request
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+`POST https://api.layertech.io/v1/chains/<ID>`
 
-`Authorization: meowmeowmeow`
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
 
-# Kittens
 
-## Get All Kittens
 
-```ruby
-require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+## Get Entries
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+If there are problems retrieving all entries, supply a limit or search term for ext id.
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl "https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries" \
+  -u YOUR_API_KEY:
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
 
 > The above command returns JSON structured like this:
 
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "chain_id": "6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe",
+    "entry_hash": "82ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e",
+    "content": "examplecontent",
+    "external_ids": ["example1", "example2"]
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves a specific chain.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://api.layertech.io/v1/chains/CHAIN_ID/entries`
+
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+limit | 500 | Gets up to the limit number of entries.
+query | "" | Searches entries for ext id
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
-## Get a Specific Kitten
 
-```ruby
-require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
 
-```python
-import kittn
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+
+## Create an Entry 
+
+Creates an entry on specified chain.
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+curl -X POST -H "Content-Type: application/json" \ 
+  -d '{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'
+  "https://api.layertech.io/api/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries" \
+  -u YOUR_API_KEY
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "entry_hash": "82ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e"
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST https://api.layertech.io/v1/chains/<ID>`
 
-### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
 
-## Delete a Specific Kitten
 
-```ruby
-require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
 
-```python
-import kittn
+## Get Entry
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+Gets entry data when given chain id and entry hash.
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
+curl "https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries/82ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e" \
+  -u YOUR_API_KEY:
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "chain_id": "6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe",
+  "entry_hash": "82ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e",
+  "content": "examplecontent",
+  "external_ids": ["example1", "example2"]
 }
 ```
 
-This endpoint deletes a specific kitten.
+This endpoint retrieves a specific chain.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://api.layertech.io/v1/chains/CHAIN_ID/entries/ENTRY_ID`
 
-### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
 
