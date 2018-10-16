@@ -89,7 +89,7 @@ This endpoint retrieves a specific chain.
 
 ### HTTP Request
 
-`GET https://api.layertech.io/v1/chains/CHAIN_ID/entries`
+`GET https://api.layertech.io/v1/chains/<CHAIN_ID>/entries`
 
 
 ### Query Parameters
@@ -159,7 +159,7 @@ This endpoint retrieves a specific chain.
 
 ### HTTP Request
 
-`GET https://api.layertech.io/v1/chains/CHAIN_ID/entries/ENTRY_ID`
+`GET https://api.layertech.io/v1/chains/<CHAIN_ID>/entries/<ENTRY_ID>`
 
 
 
