@@ -55,7 +55,40 @@ curl -X POST -H "Content-Type: application/json" \
 
 ### HTTP Request
 
-`POST https://api.layertech.io/v1/chains/<ID>`
+`POST https://api.layertech.io/v1/chains`
+
+
+
+
+
+
+
+
+## Create an Entry 
+
+Creates an entry on specified chain.
+
+```shell
+curl -X POST -H "Content-Type: application/json" \ 
+  -d '{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'
+  "https://api.layertech.io/api/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries" \
+  -u YOUR_API_KEY
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "entry_hash": "82ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e"
+}
+```
+
+
+### HTTP Request
+
+`POST https://api.layertech.io/v1/chains/<CHAIN_ID>/entries`
+
+
 
 
 
@@ -105,32 +138,6 @@ query | "" | Searches entries for ext id
 
 
 
-## Create an Entry 
-
-Creates an entry on specified chain.
-
-```shell
-curl -X POST -H "Content-Type: application/json" \ 
-  -d '{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'
-  "https://api.layertech.io/api/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries" \
-  -u YOUR_API_KEY
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "entry_hash": "82ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e"
-}
-```
-
-
-### HTTP Request
-
-`POST https://api.layertech.io/v1/chains/<ID>`
-
-
-
 
 
 
@@ -159,7 +166,7 @@ This endpoint retrieves a specific chain.
 
 ### HTTP Request
 
-`GET https://api.layertech.io/v1/chains/<CHAIN_ID>/entries/<ENTRY_ID>`
+`GET https://api.layertech.io/v1/entries/<ENTRY_ID>`
 
 
 
