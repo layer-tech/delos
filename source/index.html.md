@@ -40,7 +40,7 @@ Creates a chain with supplied entry.
 ```shell
 curl -X POST -H "Content-Type: application/json" \ 
   -d '{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'
-  "https://api.layertech.io/api/chains" \
+  "https://api.layertech.io/v1/chains" \
   -u YOUR_API_KEY
 ```
 
@@ -48,7 +48,10 @@ curl -X POST -H "Content-Type: application/json" \
 
 ```json
 {
-  "chain_id": "99268f3ad86eca2411115569e0c9e08f7cf7c642446553e0593cecd351c27bd"
+    "txId": "d0aa528c5f93a8f219b81f34430f8ef5affcb52e23f1ad48d7c2279bc96b76f",
+    "repeatedCommit": false,
+    "chainId": "2dba5dbc339e7316aea2683faf839c1b7b1ee2313db72112588118df066aa35",
+    "entryHash": "cd7b2a1f336cdcb5da55021abb18edfdfecb2d6295a01d89df472b106461edd"
 }
 ```
 
@@ -71,7 +74,7 @@ Creates an entry on specified chain.
 ```shell
 curl -X POST -H "Content-Type: application/json" \ 
   -d '{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'
-  "https://api.layertech.io/api/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries" \
+  "https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries" \
   -u YOUR_API_KEY
 ```
 
@@ -79,7 +82,10 @@ curl -X POST -H "Content-Type: application/json" \
 
 ```json
 {
-  "entry_hash": "82ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e"
+    "txId": "b2380490dff126530d2702eecb203089979f373d429a9674c3b10f09a0fc9563",
+    "repeatedCommit": false,
+    "chainId": "3565663434616136356439316462376636393530366432383537613430356535",
+    "entryHash": "fc97cc6146e4925cb7fbd160f54ceb022654be8bebc9153a8c24b8365570d1da"
 }
 ```
 
@@ -143,10 +149,10 @@ query | "" | Searches entries for ext id
 
 ## Get Entry
 
-Gets entry data when given chain id and entry hash.
+Gets entry data when given entry hash.
 
 ```shell
-curl "https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries/82ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e" \
+curl "https://api.layertech.io/v1/entries/2ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e" \
   -u YOUR_API_KEY:
 ```
 
