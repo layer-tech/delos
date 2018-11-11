@@ -268,7 +268,7 @@
 <pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
   -d <span class="s1">'{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'</span>
   <span class="s2">"https://api.layertech.io/v1/chains"</span> <span class="se">\</span>
-  -u YOUR_API_KEY
+  -u YOUR_API_KEY:
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -286,7 +286,7 @@
 <pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
   -d <span class="s1">'{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'</span>
   <span class="s2">"https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries"</span> <span class="se">\</span>
-  -u YOUR_API_KEY
+  -u YOUR_API_KEY:
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -302,6 +302,7 @@
 <h2 id='get-entries'>Get Entries</h2>
 <p>If there are problems retrieving all entries, supply a limit or search term for ext id.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
   -u YOUR_API_KEY:
 </code></pre>
 <blockquote>
@@ -341,6 +342,7 @@
 <h2 id='get-entry'>Get Entry</h2>
 <p>Gets entry data when given entry hash.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.layertech.io/v1/entries/2ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
   -u YOUR_API_KEY:
 </code></pre>
 <blockquote>
