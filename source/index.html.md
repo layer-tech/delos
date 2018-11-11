@@ -41,7 +41,7 @@ Creates a chain with supplied entry.
 curl -X POST -H "Content-Type: application/json" \ 
   -d '{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'
   "https://api.layertech.io/v1/chains" \
-  -u YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > The above command returns JSON structured like this:
@@ -75,7 +75,7 @@ Creates an entry on specified chain.
 curl -X POST -H "Content-Type: application/json" \ 
   -d '{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'
   "https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries" \
-  -u YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > The above command returns JSON structured like this:
@@ -107,6 +107,7 @@ If there are problems retrieving all entries, supply a limit or search term for 
 
 ```shell
 curl "https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries" \
+  -H "Content-Type: application/json" \ 
   -u YOUR_API_KEY:
 ```
 
@@ -153,6 +154,7 @@ Gets entry data when given entry hash.
 
 ```shell
 curl "https://api.layertech.io/v1/entries/2ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e" \
+  -H "Content-Type: application/json" \ 
   -u YOUR_API_KEY:
 ```
 
