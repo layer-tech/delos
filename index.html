@@ -225,7 +225,7 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#endpoints" class="toc-h1 toc-link" data-title="Endpoints">Endpoints</a>
+            <a href="#resources" class="toc-h1 toc-link" data-title="Resources">Resources</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-a-chain" class="toc-h2 toc-link" data-title="Create a Chain">Create a Chain</a>
@@ -263,7 +263,7 @@
 <p>Delos uses API keys to allow access to the API. You can request an API key by contacting tech [AT] layertech.io.</p>
 
 <aside class="notice">When not using <code>-u</code> flag, use <code>curl -H "Authorization: bearer YOUR_API_KEY"</code> to set the authorization header.</aside>
-<h1 id='endpoints'>Endpoints</h1><h2 id='create-a-chain'>Create a Chain</h2>
+<h1 id='resources'>Resources</h1><h2 id='create-a-chain'>Create a Chain</h2>
 <p>Creates a chain with supplied entry.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
   -d <span class="s1">'{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'</span>
@@ -302,7 +302,6 @@
 <h2 id='get-entries'>Get Entries</h2>
 <p>If there are problems retrieving all entries, supply a limit or search term for ext id.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
   -u YOUR_API_KEY:
 </code></pre>
 <blockquote>
@@ -342,7 +341,6 @@
 <h2 id='get-entry'>Get Entry</h2>
 <p>Gets entry data when given entry hash.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.layertech.io/v1/entries/2ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
   -u YOUR_API_KEY:
 </code></pre>
 <blockquote>
