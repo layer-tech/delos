@@ -30,7 +30,7 @@ Delos uses API keys to allow access to the API. You can request an API key by co
 
 <aside class="notice">When not using <code>-u</code> flag, use <code>curl -H "Authorization: bearer YOUR_API_KEY"</code> to set the authorization header.</aside>
 
-# Endpoints
+# Resources
 
 
 ## Create a Chain
@@ -107,7 +107,6 @@ If there are problems retrieving all entries, supply a limit or search term for 
 
 ```shell
 curl "https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries" \
-  -H "Content-Type: application/json" \ 
   -u YOUR_API_KEY:
 ```
 
@@ -154,7 +153,6 @@ Gets entry data when given entry hash.
 
 ```shell
 curl "https://api.layertech.io/v1/entries/2ffbc0976c70e987353f38219758af56d7598dc83c67653701f0f19b25b64e" \
-  -H "Content-Type: application/json" \ 
   -u YOUR_API_KEY:
 ```
 
@@ -175,6 +173,3 @@ This endpoint retrieves a specific chain.
 ### HTTP Request
 
 `GET https://api.layertech.io/v1/entries/<ENTRY_ID>`
-
-
-
