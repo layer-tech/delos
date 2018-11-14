@@ -265,7 +265,7 @@
 <aside class="notice">When not using <code>-u</code> flag, use <code>curl -H "Authorization: bearer YOUR_API_KEY"</code> to set the authorization header.</aside>
 <h1 id='resources'>Resources</h1><h2 id='create-a-chain'>Create a Chain</h2>
 <p>Creates a chain with supplied entry.</p>
-<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
+<pre class="highlight shell tab-shell"><code>curl -X POST
   -d <span class="s1">'{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'</span>
   <span class="s2">"https://api.layertech.io/v1/chains"</span> <span class="se">\</span>
   -u YOUR_API_KEY:
@@ -283,7 +283,7 @@
 <p><code>POST https://api.layertech.io/v1/chains</code></p>
 <h2 id='create-an-entry'>Create an Entry</h2>
 <p>Creates an entry on specified chain.</p>
-<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
+<pre class="highlight shell tab-shell"><code>curl -X POST
   -d <span class="s1">'{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'</span>
   <span class="s2">"https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries"</span> <span class="se">\</span>
   -u YOUR_API_KEY:
