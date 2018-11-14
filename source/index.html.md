@@ -38,7 +38,7 @@ Delos uses API keys to allow access to the API. You can request an API key by co
 Creates a chain with supplied entry.
 
 ```shell
-curl -X POST -H "Content-Type: application/json" \ 
+curl -X POST
   -d '{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'
   "https://api.layertech.io/v1/chains" \
   -u YOUR_API_KEY:
@@ -72,7 +72,7 @@ curl -X POST -H "Content-Type: application/json" \
 Creates an entry on specified chain.
 
 ```shell
-curl -X POST -H "Content-Type: application/json" \ 
+curl -X POST
   -d '{"ext_ids": ["example1", "example2"], "content": "examplecontent"}'
   "https://api.layertech.io/v1/chains/6e4540d08d5ac6a1a394e982fb6a2b8b516ee751c37420055141b94fe070bfe/entries" \
   -u YOUR_API_KEY:
